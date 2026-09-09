@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Min hjemmeside</title>
+
+    <style>
+        /* =========================
+           GENERAL
+        ========================= */
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background-color: #353D4D;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            padding: 30px 20px 50px 20px;
+        }
+
+        .logo {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 48px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+
+        /* =========================
+           VIDEO GRID
+        ========================= */
+
+        .video-grid {
+            width: 90%;
+            max-width: 1400px;
+            margin: 0 auto;
+
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+
+            padding-bottom: 50px;
+        }
+
+
+        /* =========================
+           VIDEO CARD
+        ========================= */
+
+        .video-card {
+            background-color: #6CA39E;
+            border-radius: 12px;
+            overflow: hidden;
+
+            transition: transform 0.2s ease;
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+        }
+
+
+        /* =========================
+           VIDEO
+        ========================= */
+
+        .video-card video {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+
+            display: block;
+
+            object-fit: cover;
+
+            background-color: #222;
+
+            cursor: pointer;
+        }
+
+
+        /* =========================
+           TEXT UNDER VIDEO
+        ========================= */
+
+        .video-title {
+            padding: 15px;
+
+            font-size: 20px;
+            font-weight: bold;
+
+            text-align: center;
+        }
+
+
+        /* =========================
+           TABLET
+        ========================= */
+
+        @media (max-width: 1000px) {
+
+            .video-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            h1 {
+                font-size: 36px;
+            }
+
+            .logo {
+                width: 80px;
+                height: 80px;
+            }
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 600px) {
+
+            .header {
+                gap: 10px;
+                padding-top: 20px;
+                padding-bottom: 30px;
+            }
+
+            .video-grid {
+                grid-template-columns: 1fr;
+                width: 90%;
+            }
+
+            .logo {
+                width: 55px;
+                height: 55px;
+            }
+
+            h1 {
+                font-size: 25px;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         HEADER
+    ========================= -->
+
+    <header class="header">
+
+        <img
+            src="sp.m logo - messe.png"
+            alt="Logo"
+            class="logo"
+        >
+
+        <h1>Velkommen til min hjemmeside</h1>
+
+        <img
+            src="sp.m logo - messe.png"
+            alt="Logo"
+            class="logo"
+        >
+
+    </header>
+
+
+
+    <!-- =========================
+         VIDEO GRID
+    ========================= -->
+
+    <main class="video-grid">
+
+
+        <div class="video-card">
+            <video preload="metadata" onclick="openFullscreen(this)">
+                <source src="video1.mp4" type="video/mp4">
+            </video>
+            <div class="video-title">Video 1</div>
+        </div>
+
+
+        <div class="video-card">
+            <video preload="metadata" onclick="openFullscreen(this)">
+                <source src="video2.mp4" type="video/mp4">
+            </video>
+            <div class="video-title">Video 2</div>
+        </div>
+
+
+        <div class="video-card">
+            <video preload="metadata" onclick="openFullscreen(this)">
+                <source src="video3.mp4" type="video/mp4">
+            </video>
+            <div class="video-title">Video 3</div>
+        </div>
+
+
+        <div class="video-card">
+            <video preload="metadata" onclick="openFullscreen(this)">
+                <source src="video4.mp4" type="video/mp4">
+            </video>
+            <div class="video-title">Video 4</div>
+        </div>
+
+
+        <div class="video-card">
+            <video preload="metadata" onclick="openFullscreen(this)">
+                <source src="video5.mp4" type="video/mp4">
+            </video>
+            <div class="video-title">Video 5</div>
+        </div>
+
+
+        <div class="video-card">
+            <video preload="metadata" onclick="openFullscreen(this)">
+                <source src="video6.mp4" type="video/mp4">
+            </video>
+            <div class="video-title">Video 6</div>
+        </div>
+
+
+        <div class="video-card">
+            <video preload="metadata" onclick="openFullscreen(this)">
+                <source src="video7.mp4" type="video/mp4">
+            </video>
+            <div class="video-title">Video 7</div>
+        </div>
+
+
+        <div class="video-card">
+            <video preload="metadata" onclick="openFullscreen(this)">
+                <source src="video8.mp4" type="video/mp4">
+            </video>
+            <div class="video-title">Video 8</div>
+        </div>
+
+
+        <div class="video-card">
+            <video preload="metadata" onclick="openFullscreen(this)">
+                <source src="video9.mp4" type="video/mp4">
+            </video>
+            <div class="video-title">Video 9</div>
+        </div>
+
+
+        <div class="video-card">
+            <video preload="metadata" onclick="openFullscreen(this)">
+                <source src="video10.mp4" type="video/mp4">
+            </video>
+            <div class="video-title">Video 10</div>
+        </div>
+
+
+        <div class="video-card">
+            <video preload="metadata" onclick="openFullscreen(this)">
+                <source src="MicrosoftTeams-video.mp4" type="video/mp4">
+            </video>
+            <div class="video-title">Peter</div>
+        </div>
+
+
+        <div class="video-card">
+            <video preload="metadata" onclick="openFullscreen(this)">
+                <source src="video12.mp4" type="video/mp4">
+            </video>
+            <div class="video-title">Video 12</div>
+        </div>
+
+
+    </main>
+
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
+    <script>
+
+        let activeVideo = null;
+
+
+        function openFullscreen(video) {
+
+            activeVideo = video;
+
+            /*
+             * Add controls ONLY while fullscreen
+             */
+            video.controls = true;
+
+            /*
+             * Start video
+             */
+            video.play();
+
+
+            /*
+             * Open fullscreen
+             */
+            if (video.requestFullscreen) {
+
+                video.requestFullscreen();
+
+            } else if (video.webkitRequestFullscreen) {
+
+                video.webkitRequestFullscreen();
+
+            } else if (video.msRequestFullscreen) {
+
+                video.msRequestFullscreen();
+
+            }
+
+        }
+
+
+        /*
+         * Detect when fullscreen changes
+         */
+        document.addEventListener(
+            "fullscreenchange",
+            handleFullscreenChange
+        );
+
+        document.addEventListener(
+            "webkitfullscreenchange",
+            handleFullscreenChange
+        );
+
+
+        function handleFullscreenChange() {
+
+            const isFullscreen =
+                document.fullscreenElement ||
+                document.webkitFullscreenElement;
+
+
+            /*
+             * User has left fullscreen
+             */
+            if (!isFullscreen && activeVideo) {
+
+                /*
+                 * Stop video
+                 */
+                activeVideo.pause();
+
+                /*
+                 * Reset to beginning
+                 */
+                activeVideo.currentTime = 0;
+
+                /*
+                 * Remove controls from grid
+                 */
+                activeVideo.controls = false;
+
+                /*
+                 * Clear active video
+                 */
+                activeVideo = null;
+            }
+        }
+
+    </script>
+
+</body>
+</html>
