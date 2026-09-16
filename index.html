@@ -3,14 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Min hjemmeside</title>
 
     <style>
-        /* =========================
-           GENERAL
-        ========================= */
-
         body {
             margin: 0;
             min-height: 100vh;
@@ -19,11 +14,7 @@
             font-family: Arial, sans-serif;
         }
 
-
-        /* =========================
-           HEADER
-        ========================= */
-
+        /* HEADER */
         .header {
             display: flex;
             align-items: center;
@@ -45,11 +36,7 @@
             text-align: center;
         }
 
-
-        /* =========================
-           VIDEO GRID
-        ========================= */
-
+        /* VIDEO GRID */
         .video-grid {
             width: 90%;
             max-width: 1400px;
@@ -57,21 +44,15 @@
 
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 25px;
 
+            gap: 25px;
             padding-bottom: 50px;
         }
-
-
-        /* =========================
-           VIDEO CARD
-        ========================= */
 
         .video-card {
             background-color: #6CA39E;
             border-radius: 12px;
             overflow: hidden;
-
             transition: transform 0.2s ease;
         }
 
@@ -79,43 +60,100 @@
             transform: translateY(-5px);
         }
 
-
-        /* =========================
-           VIDEO
-        ========================= */
-
         .video-card video {
             width: 100%;
             aspect-ratio: 16 / 9;
-
             display: block;
-
             object-fit: cover;
+            background-color: #222;
+            cursor: pointer;
+        }
+
+        .video-title {
+            padding: 15px;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        /* =========================
+           VIDEO POPUP
+           ========================= */
+
+        .video-popup {
+            display: none;
+
+            position: fixed;
+            z-index: 1000;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 100%;
+
+            background-color: rgba(0, 0, 0, 0.8);
+
+            align-items: center;
+            justify-content: center;
+        }
+
+        .video-popup.active {
+            display: flex;
+        }
+
+        .popup-content {
+            position: relative;
+
+            width: 75vw;
+            height: 75vh;
 
             background-color: #222;
+
+            border-radius: 12px;
+            overflow: hidden;
+
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.6);
+        }
+
+        .popup-content video {
+            width: 100%;
+            height: 100%;
+
+            object-fit: contain;
+
+            background-color: #111;
+        }
+
+        /* CLOSE BUTTON */
+        .close-button {
+            position: absolute;
+
+            top: 10px;
+            right: 15px;
+
+            z-index: 1001;
+
+            width: 40px;
+            height: 40px;
+
+            border: none;
+            border-radius: 50%;
+
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+
+            font-size: 28px;
+            line-height: 40px;
 
             cursor: pointer;
         }
 
-
-        /* =========================
-           TEXT UNDER VIDEO
-        ========================= */
-
-        .video-title {
-            padding: 15px;
-
-            font-size: 20px;
-            font-weight: bold;
-
-            text-align: center;
+        .close-button:hover {
+            background-color: rgba(255, 255, 255, 0.25);
         }
 
-
-        /* =========================
-           TABLET
-        ========================= */
-
+        /* TABLET */
         @media (max-width: 1000px) {
 
             .video-grid {
@@ -130,13 +168,14 @@
                 width: 80px;
                 height: 80px;
             }
+
+            .popup-content {
+                width: 85vw;
+                height: 70vh;
+            }
         }
 
-
-        /* =========================
-           MOBILE
-        ========================= */
-
+        /* MOBILE */
         @media (max-width: 600px) {
 
             .header {
@@ -158,237 +197,200 @@
             h1 {
                 font-size: 25px;
             }
-        }
 
+            .popup-content {
+                width: 95vw;
+                height: 65vh;
+            }
+        }
     </style>
 </head>
 
-
 <body>
 
-
-    <!-- =========================
-         HEADER
-    ========================= -->
-
+    <!-- HEADER -->
     <header class="header">
 
-        <img
-            src="sp.m logo - messe.png"
-            alt="Logo"
-            class="logo"
-        >
+        <img src="sp.m logo - messe.png" alt="Logo" class="logo">
 
         <h1>Velkommen til min hjemmeside</h1>
 
-        <img
-            src="sp.m logo - messe.png"
-            alt="Logo"
-            class="logo"
-        >
+        <img src="sp.m logo - messe.png" alt="Logo" class="logo">
 
     </header>
 
 
-
-    <!-- =========================
-         VIDEO GRID
-    ========================= -->
-
+    <!-- VIDEO GRID -->
     <main class="video-grid">
 
-
         <div class="video-card">
-            <video preload="metadata" onclick="openFullscreen(this)">
+            <video preload="metadata" onclick="openVideo(this)">
                 <source src="video1.mp4" type="video/mp4">
             </video>
-            <div class="video-title">Botræning</div>
+            <div class="video-title">Video 1</div>
         </div>
 
-
         <div class="video-card">
-            <video preload="metadata" onclick="openFullscreen(this)">
+            <video preload="metadata" onclick="openVideo(this)">
                 <source src="video2.mp4" type="video/mp4">
             </video>
-            <div class="video-title">Fagligt</div>
+            <div class="video-title">Video 2</div>
         </div>
 
-
         <div class="video-card">
-            <video preload="metadata" onclick="openFullscreen(this)">
+            <video preload="metadata" onclick="openVideo(this)">
                 <source src="video3.mp4" type="video/mp4">
             </video>
-            <div class="video-title">IT opgaver</div>
+            <div class="video-title">Video 3</div>
         </div>
 
-
         <div class="video-card">
-            <video preload="metadata" onclick="openFullscreen(this)">
+            <video preload="metadata" onclick="openVideo(this)">
                 <source src="video4.mp4" type="video/mp4">
             </video>
-            <div class="video-title">Jobafprøvning</div>
+            <div class="video-title">Video 4</div>
         </div>
 
-
         <div class="video-card">
-            <video preload="metadata" onclick="openFullscreen(this)">
+            <video preload="metadata" onclick="openVideo(this)">
                 <source src="video5.mp4" type="video/mp4">
             </video>
-            <div class="video-title">KREA</div>
+            <div class="video-title">Video 5</div>
         </div>
 
-
         <div class="video-card">
-            <video preload="metadata" onclick="openFullscreen(this)">
+            <video preload="metadata" onclick="openVideo(this)">
                 <source src="video6.mp4" type="video/mp4">
             </video>
-            <div class="video-title">Mindfulness og Yoga</div>
+            <div class="video-title">Video 6</div>
         </div>
 
-
         <div class="video-card">
-            <video preload="metadata" onclick="openFullscreen(this)">
+            <video preload="metadata" onclick="openVideo(this)">
                 <source src="video7.mp4" type="video/mp4">
             </video>
-            <div class="video-title">Motion og træning</div>
+            <div class="video-title">Video 7</div>
         </div>
 
-
         <div class="video-card">
-            <video preload="metadata" onclick="openFullscreen(this)">
+            <video preload="metadata" onclick="openVideo(this)">
                 <source src="video8.mp4" type="video/mp4">
             </video>
-            <div class="video-title">Praktiske opgaver</div>
+            <div class="video-title">Video 8</div>
         </div>
 
-
         <div class="video-card">
-            <video preload="metadata" onclick="openFullscreen(this)">
+            <video preload="metadata" onclick="openVideo(this)">
                 <source src="video9.mp4" type="video/mp4">
             </video>
-            <div class="video-title">Rekreative aktiviteter</div>
+            <div class="video-title">Video 9</div>
         </div>
 
-
         <div class="video-card">
-            <video preload="metadata" onclick="openFullscreen(this)">
+            <video preload="metadata" onclick="openVideo(this)">
                 <source src="video10.mp4" type="video/mp4">
             </video>
-            <div class="video-title">Slideshow fra infotavle</div>
+            <div class="video-title">Video 10</div>
         </div>
 
-
         <div class="video-card">
-            <video preload="metadata" onclick="openFullscreen(this)">
-                <source src="video11.mp4" type="video/mp4">
+            <video preload="metadata" onclick="openVideo(this)">
+                <source src="1583660463.mp4" type="video/mp4">
             </video>
-            <div class="video-title">Ture ud af huset</div>
+            <div class="video-title">Video 11</div>
         </div>
 
-
         <div class="video-card">
-            <video preload="metadata" onclick="openFullscreen(this)">
+            <video preload="metadata" onclick="openVideo(this)">
                 <source src="video12.mp4" type="video/mp4">
             </video>
-            <div class="video-title">Ungdomsliv</div>
+            <div class="video-title">Video 12</div>
         </div>
-
 
     </main>
 
 
+    <!-- VIDEO POPUP -->
+    <div class="video-popup" id="videoPopup" onclick="closeVideoOutside(event)">
 
-    <!-- =========================
-         JAVASCRIPT
-    ========================= -->
+        <div class="popup-content">
 
+            <button class="close-button" onclick="closeVideo()">
+                &times;
+            </button>
+
+            <video id="popupVideo" controls>
+            </video>
+
+        </div>
+
+    </div>
+
+
+    <!-- JAVASCRIPT -->
     <script>
 
-        let activeVideo = null;
+        const popup = document.getElementById("videoPopup");
+        const popupVideo = document.getElementById("popupVideo");
 
 
-        function openFullscreen(video) {
+        function openVideo(video) {
 
-            activeVideo = video;
+            // Get the video source
+            const source = video.querySelector("source");
 
-            /*
-             * Add controls ONLY while fullscreen
-             */
-            video.controls = true;
+            // Set popup video source
+            popupVideo.src = source.src;
 
-            /*
-             * Start video
-             */
-            video.play();
+            // Show popup
+            popup.classList.add("active");
+
+            // Prevent background scrolling
+            document.body.style.overflow = "hidden";
+
+            // Start video
+            popupVideo.play();
+        }
 
 
-            /*
-             * Open fullscreen
-             */
-            if (video.requestFullscreen) {
+        function closeVideo() {
 
-                video.requestFullscreen();
+            // Stop video
+            popupVideo.pause();
 
-            } else if (video.webkitRequestFullscreen) {
+            // Reset video
+            popupVideo.currentTime = 0;
 
-                video.webkitRequestFullscreen();
+            // Remove video source
+            popupVideo.removeAttribute("src");
+            popupVideo.load();
 
-            } else if (video.msRequestFullscreen) {
+            // Hide popup
+            popup.classList.remove("active");
 
-                video.msRequestFullscreen();
+            // Allow scrolling again
+            document.body.style.overflow = "";
+        }
 
+
+        function closeVideoOutside(event) {
+
+            // Only close if the dark background itself was clicked
+            if (event.target === popup) {
+                closeVideo();
             }
 
         }
 
 
-        /*
-         * Detect when fullscreen changes
-         */
-        document.addEventListener(
-            "fullscreenchange",
-            handleFullscreenChange
-        );
+        // Close popup with ESC key
+        document.addEventListener("keydown", function(event) {
 
-        document.addEventListener(
-            "webkitfullscreenchange",
-            handleFullscreenChange
-        );
-
-
-        function handleFullscreenChange() {
-
-            const isFullscreen =
-                document.fullscreenElement ||
-                document.webkitFullscreenElement;
-
-
-            /*
-             * User has left fullscreen
-             */
-            if (!isFullscreen && activeVideo) {
-
-                /*
-                 * Stop video
-                 */
-                activeVideo.pause();
-
-                /*
-                 * Reset to beginning
-                 */
-                activeVideo.currentTime = 0;
-
-                /*
-                 * Remove controls from grid
-                 */
-                activeVideo.controls = false;
-
-                /*
-                 * Clear active video
-                 */
-                activeVideo = null;
+            if (event.key === "Escape") {
+                closeVideo();
             }
-        }
+
+        });
 
     </script>
 
