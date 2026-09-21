@@ -60,14 +60,51 @@
             transform: translateY(-5px);
         }
 
-        /* IMAGE PREVIEW */
-        .video-preview {
+        /* VIDEO PREVIEW */
+        .video-preview-wrapper {
+            position: relative;
             width: 100%;
             aspect-ratio: 16 / 9;
-            display: block;
-            object-fit: cover;
+            overflow: hidden;
             background-color: #222;
             cursor: pointer;
+        }
+
+        .video-preview {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            cursor: pointer;
+        }
+
+        /* PLAY BUTTON ON PREVIEW */
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+            width: 60px;
+            height: 60px;
+
+            border-radius: 50%;
+            background-color: rgba(0, 0, 0, 0.65);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            pointer-events: none;
+        }
+
+        .play-button::after {
+            content: "";
+            margin-left: 5px;
+
+            border-top: 12px solid transparent;
+            border-bottom: 12px solid transparent;
+            border-left: 20px solid white;
         }
 
         .video-title {
@@ -122,7 +159,6 @@
             height: 100%;
 
             object-fit: contain;
-
             background-color: #111;
         }
 
@@ -203,6 +239,17 @@
                 width: 95vw;
                 height: 65vh;
             }
+
+            .play-button {
+                width: 50px;
+                height: 50px;
+            }
+
+            .play-button::after {
+                border-top-width: 10px;
+                border-bottom-width: 10px;
+                border-left-width: 17px;
+            }
         }
     </style>
 </head>
@@ -226,145 +273,301 @@
 
         <!-- VIDEO 1 -->
         <div class="video-card">
-            <img
-                src="preview1.jpg"
-                alt="Botræning"
-                class="video-preview"
-                onclick="openVideo('video1.mp4')"
-            >
-            <div class="video-title">Botræning</div>
+
+            <div class="video-preview-wrapper"
+                 onclick="openVideo('video1.mp4')">
+
+                <video
+                    class="video-preview"
+                    poster="preview1.jpg"
+                    preload="none"
+                >
+                    <source src="video1.mp4" type="video/mp4">
+                </video>
+
+                <div class="play-button"></div>
+
+            </div>
+
+            <div class="video-title">
+                Botræning
+            </div>
+
         </div>
 
 
         <!-- VIDEO 2 -->
         <div class="video-card">
-            <img
-                src="preview2.jpg"
-                alt="Fagligt"
-                class="video-preview"
-                onclick="openVideo('video2.mp4')"
-            >
-            <div class="video-title">Fagligt</div>
+
+            <div class="video-preview-wrapper"
+                 onclick="openVideo('video2.mp4')">
+
+                <video
+                    class="video-preview"
+                    poster="preview2.jpg"
+                    preload="none"
+                >
+                    <source src="video2.mp4" type="video/mp4">
+                </video>
+
+                <div class="play-button"></div>
+
+            </div>
+
+            <div class="video-title">
+                Fagligt
+            </div>
+
         </div>
 
 
         <!-- VIDEO 3 -->
         <div class="video-card">
-            <img
-                src="preview3.jpg"
-                alt="IT opgaver"
-                class="video-preview"
-                onclick="openVideo('video3.mp4')"
-            >
-            <div class="video-title">IT opgaver</div>
+
+            <div class="video-preview-wrapper"
+                 onclick="openVideo('video3.mp4')">
+
+                <video
+                    class="video-preview"
+                    poster="preview3.jpg"
+                    preload="none"
+                >
+                    <source src="video3.mp4" type="video/mp4">
+                </video>
+
+                <div class="play-button"></div>
+
+            </div>
+
+            <div class="video-title">
+                IT opgaver
+            </div>
+
         </div>
 
 
         <!-- VIDEO 4 -->
         <div class="video-card">
-            <img
-                src="preview4.jpg"
-                alt="Jobafprøvning"
-                class="video-preview"
-                onclick="openVideo('video4.mp4')"
-            >
-            <div class="video-title">Jobafprøvning</div>
+
+            <div class="video-preview-wrapper"
+                 onclick="openVideo('video4.mp4')">
+
+                <video
+                    class="video-preview"
+                    poster="preview4.jpg"
+                    preload="none"
+                >
+                    <source src="video4.mp4" type="video/mp4">
+                </video>
+
+                <div class="play-button"></div>
+
+            </div>
+
+            <div class="video-title">
+                Jobafprøvning
+            </div>
+
         </div>
 
 
         <!-- VIDEO 5 -->
         <div class="video-card">
-            <img
-                src="preview5.jpg"
-                alt="KREA"
-                class="video-preview"
-                onclick="openVideo('video5.mp4')"
-            >
-            <div class="video-title">KREA</div>
+
+            <div class="video-preview-wrapper"
+                 onclick="openVideo('video5.mp4')">
+
+                <video
+                    class="video-preview"
+                    poster="preview5.jpg"
+                    preload="none"
+                >
+                    <source src="video5.mp4" type="video/mp4">
+                </video>
+
+                <div class="play-button"></div>
+
+            </div>
+
+            <div class="video-title">
+                KREA
+            </div>
+
         </div>
 
 
         <!-- VIDEO 6 -->
         <div class="video-card">
-            <img
-                src="Asset 10.png"
-                alt="Mindfulness og Yoga"
-                class="video-preview"
-                onclick="openVideo('video6.mp4')"
-            >
-            <div class="video-title">Mindfulness og Yoga</div>
+
+            <div class="video-preview-wrapper"
+                 onclick="openVideo('video6.mp4')">
+
+                <video
+                    class="video-preview"
+                    poster="preview6.jpg"
+                    preload="none"
+                >
+                    <source src="video6.mp4" type="video/mp4">
+                </video>
+
+                <div class="play-button"></div>
+
+            </div>
+
+            <div class="video-title">
+                Mindfulness og Yoga
+            </div>
+
         </div>
 
 
         <!-- VIDEO 7 -->
         <div class="video-card">
-            <img
-                src="preview7.jpg"
-                alt="Motion og træning"
-                class="video-preview"
-                onclick="openVideo('video7.mp4')"
-            >
-            <div class="video-title">Motion og træning</div>
+
+            <div class="video-preview-wrapper"
+                 onclick="openVideo('video7.mp4')">
+
+                <video
+                    class="video-preview"
+                    poster="preview7.jpg"
+                    preload="none"
+                >
+                    <source src="video7.mp4" type="video/mp4">
+                </video>
+
+                <div class="play-button"></div>
+
+            </div>
+
+            <div class="video-title">
+                Motion og træning
+            </div>
+
         </div>
 
 
         <!-- VIDEO 8 -->
         <div class="video-card">
-            <img
-                src="preview8.jpg"
-                alt="Praktiske opgaver"
-                class="video-preview"
-                onclick="openVideo('video8.mp4')"
-            >
-            <div class="video-title">Praktiske opgaver</div>
+
+            <div class="video-preview-wrapper"
+                 onclick="openVideo('video8.mp4')">
+
+                <video
+                    class="video-preview"
+                    poster="preview8.jpg"
+                    preload="none"
+                >
+                    <source src="video8.mp4" type="video/mp4">
+                </video>
+
+                <div class="play-button"></div>
+
+            </div>
+
+            <div class="video-title">
+                Praktiske opgaver
+            </div>
+
         </div>
 
 
         <!-- VIDEO 9 -->
         <div class="video-card">
-            <img
-                src="preview9.jpg"
-                alt="Rekreative aktiviteter"
-                class="video-preview"
-                onclick="openVideo('video9.mp4')"
-            >
-            <div class="video-title">Rekreative aktiviteter</div>
+
+            <div class="video-preview-wrapper"
+                 onclick="openVideo('video9.mp4')">
+
+                <video
+                    class="video-preview"
+                    poster="preview9.jpg"
+                    preload="none"
+                >
+                    <source src="video9.mp4" type="video/mp4">
+                </video>
+
+                <div class="play-button"></div>
+
+            </div>
+
+            <div class="video-title">
+                Rekreative aktiviteter
+            </div>
+
         </div>
 
 
         <!-- VIDEO 10 -->
         <div class="video-card">
-            <img
-                src="preview10.jpg"
-                alt="Slideshow fra infotavle"
-                class="video-preview"
-                onclick="openVideo('video10.mp4')"
-            >
-            <div class="video-title">Slideshow fra infotavle</div>
+
+            <div class="video-preview-wrapper"
+                 onclick="openVideo('video10.mp4')">
+
+                <video
+                    class="video-preview"
+                    poster="preview10.jpg"
+                    preload="none"
+                >
+                    <source src="video10.mp4" type="video/mp4">
+                </video>
+
+                <div class="play-button"></div>
+
+            </div>
+
+            <div class="video-title">
+                Slideshow fra infotavle
+            </div>
+
         </div>
 
 
         <!-- VIDEO 11 -->
         <div class="video-card">
-            <img
-                src="preview11.jpg"
-                alt="Ture ud af huset"
-                class="video-preview"
-                onclick="openVideo('1583660463.mp4')"
-            >
-            <div class="video-title">Ture ud af huset</div>
+
+            <div class="video-preview-wrapper"
+                 onclick="openVideo('1583660463.mp4')">
+
+                <video
+                    class="video-preview"
+                    poster="preview11.jpg"
+                    preload="none"
+                >
+                    <source src="1583660463.mp4" type="video/mp4">
+                </video>
+
+                <div class="play-button"></div>
+
+            </div>
+
+            <div class="video-title">
+                Ture ud af huset
+            </div>
+
         </div>
 
 
         <!-- VIDEO 12 -->
         <div class="video-card">
-            <img
-                src="preview12.jpg"
-                alt="Ungdomsliv"
-                class="video-preview"
-                onclick="openVideo('video12.mp4')"
-            >
-            <div class="video-title">Ungdomsliv</div>
+
+            <div class="video-preview-wrapper"
+                 onclick="openVideo('video12.mp4')">
+
+                <video
+                    class="video-preview"
+                    poster="Asset 2.png"
+                    preload="none"
+                >
+                    <source src="video12.mp4" type="video/mp4">
+                </video>
+
+                <div class="play-button"></div>
+
+            </div>
+
+            <div class="video-title">
+                Ungdomsliv
+            </div>
+
         </div>
 
     </main>
@@ -382,6 +585,7 @@
             <button
                 class="close-button"
                 onclick="closeVideo()"
+                aria-label="Luk video"
             >
                 &times;
             </button>
@@ -389,6 +593,7 @@
             <video
                 id="popupVideo"
                 controls
+                playsinline
             >
             </video>
 
@@ -416,7 +621,9 @@
             document.body.style.overflow = "hidden";
 
             // Start video
-            popupVideo.play();
+            popupVideo.play().catch(function(error) {
+                console.log("Videoen kunne ikke starte automatisk:", error);
+            });
         }
 
 
@@ -442,7 +649,7 @@
 
         function closeVideoOutside(event) {
 
-            // Only close when the dark background is clicked
+            // Close only if dark background is clicked
             if (event.target === popup) {
                 closeVideo();
             }
@@ -453,7 +660,7 @@
         // Close popup with ESC
         document.addEventListener("keydown", function(event) {
 
-            if (event.key === "Escape") {
+            if (event.key === "Escape" && popup.classList.contains("active")) {
                 closeVideo();
             }
 
