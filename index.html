@@ -3,125 +3,203 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Special Minds - messe</title>
 
     <style>
+
+        /* =========================
+           GENERAL
+           ========================= */
+
         body {
             margin: 0;
             min-height: 100vh;
+
             background-color: #353D4D;
             color: white;
+
             font-family: Arial, sans-serif;
         }
 
-        /* HEADER */
+
+        /* =========================
+           HEADER
+           ========================= */
+
         .header {
             display: flex;
             align-items: center;
             justify-content: center;
+
             gap: 30px;
+
             padding: 30px 20px 50px 20px;
         }
+
 
         .logo {
             width: 100px;
             height: 100px;
+
             object-fit: contain;
         }
 
+
         h1 {
             margin: 0;
+
             font-size: 48px;
             font-weight: bold;
+
             text-align: center;
         }
 
-        /* VIDEO GRID */
+
+        /* =========================
+           VIDEO GRID
+           ========================= */
+
         .video-grid {
             width: 90%;
             max-width: 1400px;
+
             margin: 0 auto;
 
             display: grid;
+
             grid-template-columns: repeat(4, 1fr);
 
             gap: 25px;
+
             padding-bottom: 50px;
         }
 
+
+        /* =========================
+           VIDEO CARD
+           ========================= */
+
         .video-card {
             background-color: #6CA39E;
+
             border-radius: 12px;
+
             overflow: hidden;
+
             transition: transform 0.2s ease;
         }
+
 
         .video-card:hover {
             transform: translateY(-5px);
         }
 
-        /* VIDEO PREVIEW */
+
+        /* =========================
+           VIDEO PREVIEW
+           ========================= */
+
         .video-preview-wrapper {
             position: relative;
+
             width: 100%;
             aspect-ratio: 16 / 9;
+
             overflow: hidden;
+
             background-color: #222;
+
             cursor: pointer;
         }
+
 
         .video-preview {
             width: 100%;
             height: 100%;
+
             display: block;
+
             object-fit: cover;
+
+            background-color: #222;
+
             cursor: pointer;
         }
 
-        /* PLAY BUTTON ON PREVIEW */
+
+        /* =========================
+           PLAY BUTTON
+           ========================= */
+
         .play-button {
             position: absolute;
+
             top: 50%;
             left: 50%;
+
             transform: translate(-50%, -50%);
 
-            width: 60px;
-            height: 60px;
+            width: 65px;
+            height: 65px;
 
             border-radius: 50%;
+
             background-color: rgba(0, 0, 0, 0.65);
 
             display: flex;
+
             align-items: center;
             justify-content: center;
 
             pointer-events: none;
+
+            transition: transform 0.2s ease,
+                        background-color 0.2s ease;
         }
+
 
         .play-button::after {
             content: "";
+
             margin-left: 5px;
 
-            border-top: 12px solid transparent;
-            border-bottom: 12px solid transparent;
-            border-left: 20px solid white;
+            border-top: 13px solid transparent;
+            border-bottom: 13px solid transparent;
+            border-left: 21px solid white;
         }
+
+
+        .video-preview-wrapper:hover .play-button {
+            transform: translate(-50%, -50%) scale(1.1);
+
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+
+        /* =========================
+           VIDEO TITLE
+           ========================= */
 
         .video-title {
             padding: 15px;
+
             font-size: 20px;
             font-weight: bold;
+
             text-align: center;
         }
 
+
         /* =========================
-           VIDEO POPUP
+           VIDEO POPUP BACKGROUND
            ========================= */
 
         .video-popup {
             display: none;
 
             position: fixed;
+
             z-index: 1000;
 
             top: 0;
@@ -136,9 +214,15 @@
             justify-content: center;
         }
 
+
         .video-popup.active {
             display: flex;
         }
+
+
+        /* =========================
+           POPUP VIDEO CONTAINER
+           ========================= */
 
         .popup-content {
             position: relative;
@@ -149,20 +233,33 @@
             background-color: #222;
 
             border-radius: 12px;
+
             overflow: hidden;
 
             box-shadow: 0 0 40px rgba(0, 0, 0, 0.6);
         }
 
+
+        /* =========================
+           POPUP VIDEO
+           ========================= */
+
         .popup-content video {
             width: 100%;
             height: 100%;
 
+            display: block;
+
             object-fit: contain;
+
             background-color: #111;
         }
 
-        /* CLOSE BUTTON */
+
+        /* =========================
+           CLOSE BUTTON
+           ========================= */
+
         .close-button {
             position: absolute;
 
@@ -175,114 +272,168 @@
             height: 40px;
 
             border: none;
+
             border-radius: 50%;
 
             background-color: rgba(0, 0, 0, 0.7);
+
             color: white;
 
             font-size: 28px;
+
             line-height: 40px;
 
             cursor: pointer;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
         }
+
 
         .close-button:hover {
             background-color: rgba(255, 255, 255, 0.25);
         }
 
-        /* TABLET */
+
+        /* =========================
+           TABLET
+           ========================= */
+
         @media (max-width: 1000px) {
 
             .video-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
 
+
             h1 {
                 font-size: 36px;
             }
+
 
             .logo {
                 width: 80px;
                 height: 80px;
             }
 
+
             .popup-content {
                 width: 85vw;
                 height: 70vh;
             }
+
         }
 
-        /* MOBILE */
+
+        /* =========================
+           MOBILE
+           ========================= */
+
         @media (max-width: 600px) {
 
             .header {
                 gap: 10px;
+
                 padding-top: 20px;
                 padding-bottom: 30px;
             }
 
+
             .video-grid {
                 grid-template-columns: 1fr;
+
                 width: 90%;
             }
+
 
             .logo {
                 width: 55px;
                 height: 55px;
             }
 
+
             h1 {
                 font-size: 25px;
             }
+
 
             .popup-content {
                 width: 95vw;
                 height: 65vh;
             }
 
+
             .play-button {
                 width: 50px;
                 height: 50px;
             }
+
 
             .play-button::after {
                 border-top-width: 10px;
                 border-bottom-width: 10px;
                 border-left-width: 17px;
             }
+
         }
+
     </style>
 </head>
 
+
 <body>
 
-    <!-- HEADER -->
+
+    <!-- =========================
+         HEADER
+         ========================= -->
+
     <header class="header">
 
-        <img src="sp.m logo - messe.png" alt="Logo" class="logo">
+        <img
+            src="sp.m logo - messe.png"
+            alt="Special Minds logo"
+            class="logo"
+        >
 
-        <h1>Velkommen til Special Minds</h1>
+        <h1>
+            Velkommen til Special Minds
+        </h1>
 
-        <img src="sp.m logo - messe.png" alt="Logo" class="logo">
+        <img
+            src="sp.m logo - messe.png"
+            alt="Special Minds logo"
+            class="logo"
+        >
 
     </header>
 
 
-    <!-- VIDEO GRID -->
+
+    <!-- =========================
+         VIDEO GRID
+         ========================= -->
+
     <main class="video-grid">
+
 
         <!-- VIDEO 1 -->
         <div class="video-card">
 
-            <div class="video-preview-wrapper"
-                 onclick="openVideo('video1.mp4')">
+            <div
+                class="video-preview-wrapper"
+                onclick="openVideo('video1.mp4')"
+            >
 
                 <video
                     class="video-preview"
                     poster="preview1.jpg"
                     preload="none"
+                    muted
+                    playsinline
                 >
-                    <source src="video1.mp4" type="video/mp4">
                 </video>
 
                 <div class="play-button"></div>
@@ -296,18 +447,22 @@
         </div>
 
 
+
         <!-- VIDEO 2 -->
         <div class="video-card">
 
-            <div class="video-preview-wrapper"
-                 onclick="openVideo('video2.mp4')">
+            <div
+                class="video-preview-wrapper"
+                onclick="openVideo('video2.mp4')"
+            >
 
                 <video
                     class="video-preview"
                     poster="preview2.jpg"
                     preload="none"
+                    muted
+                    playsinline
                 >
-                    <source src="video2.mp4" type="video/mp4">
                 </video>
 
                 <div class="play-button"></div>
@@ -321,18 +476,22 @@
         </div>
 
 
+
         <!-- VIDEO 3 -->
         <div class="video-card">
 
-            <div class="video-preview-wrapper"
-                 onclick="openVideo('video3.mp4')">
+            <div
+                class="video-preview-wrapper"
+                onclick="openVideo('video3.mp4')"
+            >
 
                 <video
                     class="video-preview"
                     poster="preview3.jpg"
                     preload="none"
+                    muted
+                    playsinline
                 >
-                    <source src="video3.mp4" type="video/mp4">
                 </video>
 
                 <div class="play-button"></div>
@@ -346,18 +505,22 @@
         </div>
 
 
+
         <!-- VIDEO 4 -->
         <div class="video-card">
 
-            <div class="video-preview-wrapper"
-                 onclick="openVideo('video4.mp4')">
+            <div
+                class="video-preview-wrapper"
+                onclick="openVideo('video4.mp4')"
+            >
 
                 <video
                     class="video-preview"
                     poster="preview4.jpg"
                     preload="none"
+                    muted
+                    playsinline
                 >
-                    <source src="video4.mp4" type="video/mp4">
                 </video>
 
                 <div class="play-button"></div>
@@ -371,18 +534,22 @@
         </div>
 
 
+
         <!-- VIDEO 5 -->
         <div class="video-card">
 
-            <div class="video-preview-wrapper"
-                 onclick="openVideo('video5.mp4')">
+            <div
+                class="video-preview-wrapper"
+                onclick="openVideo('video5.mp4')"
+            >
 
                 <video
                     class="video-preview"
                     poster="preview5.jpg"
                     preload="none"
+                    muted
+                    playsinline
                 >
-                    <source src="video5.mp4" type="video/mp4">
                 </video>
 
                 <div class="play-button"></div>
@@ -396,18 +563,22 @@
         </div>
 
 
+
         <!-- VIDEO 6 -->
         <div class="video-card">
 
-            <div class="video-preview-wrapper"
-                 onclick="openVideo('video6.mp4')">
+            <div
+                class="video-preview-wrapper"
+                onclick="openVideo('video6.mp4')"
+            >
 
                 <video
                     class="video-preview"
                     poster="preview6.jpg"
                     preload="none"
+                    muted
+                    playsinline
                 >
-                    <source src="video6.mp4" type="video/mp4">
                 </video>
 
                 <div class="play-button"></div>
@@ -421,18 +592,22 @@
         </div>
 
 
+
         <!-- VIDEO 7 -->
         <div class="video-card">
 
-            <div class="video-preview-wrapper"
-                 onclick="openVideo('video7.mp4')">
+            <div
+                class="video-preview-wrapper"
+                onclick="openVideo('video7.mp4')"
+            >
 
                 <video
                     class="video-preview"
                     poster="preview7.jpg"
                     preload="none"
+                    muted
+                    playsinline
                 >
-                    <source src="video7.mp4" type="video/mp4">
                 </video>
 
                 <div class="play-button"></div>
@@ -446,18 +621,22 @@
         </div>
 
 
+
         <!-- VIDEO 8 -->
         <div class="video-card">
 
-            <div class="video-preview-wrapper"
-                 onclick="openVideo('video8.mp4')">
+            <div
+                class="video-preview-wrapper"
+                onclick="openVideo('video8.mp4')"
+            >
 
                 <video
                     class="video-preview"
                     poster="preview8.jpg"
                     preload="none"
+                    muted
+                    playsinline
                 >
-                    <source src="video8.mp4" type="video/mp4">
                 </video>
 
                 <div class="play-button"></div>
@@ -471,18 +650,22 @@
         </div>
 
 
+
         <!-- VIDEO 9 -->
         <div class="video-card">
 
-            <div class="video-preview-wrapper"
-                 onclick="openVideo('video9.mp4')">
+            <div
+                class="video-preview-wrapper"
+                onclick="openVideo('video9.mp4')"
+            >
 
                 <video
                     class="video-preview"
                     poster="preview9.jpg"
                     preload="none"
+                    muted
+                    playsinline
                 >
-                    <source src="video9.mp4" type="video/mp4">
                 </video>
 
                 <div class="play-button"></div>
@@ -496,18 +679,22 @@
         </div>
 
 
+
         <!-- VIDEO 10 -->
         <div class="video-card">
 
-            <div class="video-preview-wrapper"
-                 onclick="openVideo('video10.mp4')">
+            <div
+                class="video-preview-wrapper"
+                onclick="openVideo('video10.mp4')"
+            >
 
                 <video
                     class="video-preview"
                     poster="preview10.jpg"
                     preload="none"
+                    muted
+                    playsinline
                 >
-                    <source src="video10.mp4" type="video/mp4">
                 </video>
 
                 <div class="play-button"></div>
@@ -521,18 +708,22 @@
         </div>
 
 
+
         <!-- VIDEO 11 -->
         <div class="video-card">
 
-            <div class="video-preview-wrapper"
-                 onclick="openVideo('1583660463.mp4')">
+            <div
+                class="video-preview-wrapper"
+                onclick="openVideo('1583660463.mp4')"
+            >
 
                 <video
                     class="video-preview"
                     poster="preview11.jpg"
                     preload="none"
+                    muted
+                    playsinline
                 >
-                    <source src="1583660463.mp4" type="video/mp4">
                 </video>
 
                 <div class="play-button"></div>
@@ -546,18 +737,22 @@
         </div>
 
 
+
         <!-- VIDEO 12 -->
         <div class="video-card">
 
-            <div class="video-preview-wrapper"
-                 onclick="openVideo('video12.mp4')">
+            <div
+                class="video-preview-wrapper"
+                onclick="openVideo('MicrosoftTeams-video.mp4')"
+            >
 
                 <video
                     class="video-preview"
                     poster="Asset 2.png"
                     preload="none"
+                    muted
+                    playsinline
                 >
-                    <source src="MicrosoftTeams-video.mp4" type="video/mp4">
                 </video>
 
                 <div class="play-button"></div>
@@ -570,10 +765,15 @@
 
         </div>
 
+
     </main>
 
 
-    <!-- VIDEO POPUP -->
+
+    <!-- =========================
+         VIDEO POPUP
+         ========================= -->
+
     <div
         class="video-popup"
         id="videoPopup"
@@ -590,6 +790,7 @@
                 &times;
             </button>
 
+
             <video
                 id="popupVideo"
                 controls
@@ -602,71 +803,140 @@
     </div>
 
 
-    <!-- JAVASCRIPT -->
+
+    <!-- =========================
+         JAVASCRIPT
+         ========================= -->
+
     <script>
 
         const popup = document.getElementById("videoPopup");
+
         const popupVideo = document.getElementById("popupVideo");
 
 
+        /*
+         * OPEN VIDEO
+         */
+
         function openVideo(videoFile) {
 
-            // Set the selected video
+            // Make sure any previous video is stopped
+            popupVideo.pause();
+
+            // Set the new video
             popupVideo.src = videoFile;
 
             // Show popup
             popup.classList.add("active");
 
-            // Prevent background scrolling
+            // Prevent the page from scrolling
             document.body.style.overflow = "hidden";
 
-            // Start video
-            popupVideo.play().catch(function(error) {
-                console.log("Videoen kunne ikke starte automatisk:", error);
-            });
+            // Load the selected MP4
+            popupVideo.load();
+
+            /*
+             * Start playing the video.
+             * The play() call happens directly from the
+             * click that opened the video.
+             */
+            const playPromise = popupVideo.play();
+
+            if (playPromise !== undefined) {
+
+                playPromise.catch(function(error) {
+
+                    console.log(
+                        "Video could not start automatically:",
+                        error
+                    );
+
+                });
+
+            }
+
         }
 
 
+        /*
+         * CLOSE VIDEO
+         */
+
         function closeVideo() {
 
-            // Stop video
+            // Stop playback
             popupVideo.pause();
 
-            // Reset video
+            // Reset playback position
             popupVideo.currentTime = 0;
 
-            // Remove video source
+            // Remove the video
             popupVideo.removeAttribute("src");
+
+            // Reset the video element
             popupVideo.load();
 
             // Hide popup
             popup.classList.remove("active");
 
-            // Allow scrolling again
+            // Allow page scrolling again
             document.body.style.overflow = "";
+
         }
 
 
+        /*
+         * CLOSE WHEN CLICKING OUTSIDE
+         */
+
         function closeVideoOutside(event) {
 
-            // Close only if dark background is clicked
+            // Only close if the dark background itself
+            // was clicked.
+
             if (event.target === popup) {
+
                 closeVideo();
+
             }
 
         }
 
 
-        // Close popup with ESC
+        /*
+         * CLOSE WITH ESCAPE
+         */
+
         document.addEventListener("keydown", function(event) {
 
-            if (event.key === "Escape" && popup.classList.contains("active")) {
+            if (
+                event.key === "Escape" &&
+                popup.classList.contains("active")
+            ) {
+
                 closeVideo();
+
             }
 
         });
 
+
+        /*
+         * IF VIDEO FINISHES
+         *
+         * The video stays open so the visitor can replay it
+         * using the controls.
+         */
+
+        popupVideo.addEventListener("ended", function() {
+
+            popupVideo.currentTime = 0;
+
+        });
+
     </script>
+
 
 </body>
 </html>
