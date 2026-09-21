@@ -60,7 +60,8 @@
             transform: translateY(-5px);
         }
 
-        .video-card video {
+        /* IMAGE PREVIEW */
+        .video-preview {
             width: 100%;
             aspect-ratio: 16 / 9;
             display: block;
@@ -223,87 +224,146 @@
     <!-- VIDEO GRID -->
     <main class="video-grid">
 
+        <!-- VIDEO 1 -->
         <div class="video-card">
-            <video preload="metadata" onclick="openVideo(this)">
-                <source src="video1.mp4" type="video/mp4">
-            </video>
+            <img
+                src="preview1.jpg"
+                alt="Botræning"
+                class="video-preview"
+                onclick="openVideo('video1.mp4')"
+            >
             <div class="video-title">Botræning</div>
         </div>
 
+
+        <!-- VIDEO 2 -->
         <div class="video-card">
-            <video preload="metadata" onclick="openVideo(this)">
-                <source src="video2.mp4" type="video/mp4">
-            </video>
+            <img
+                src="preview2.jpg"
+                alt="Fagligt"
+                class="video-preview"
+                onclick="openVideo('video2.mp4')"
+            >
             <div class="video-title">Fagligt</div>
         </div>
 
+
+        <!-- VIDEO 3 -->
         <div class="video-card">
-            <video preload="metadata" onclick="openVideo(this)">
-                <source src="video3.mp4" type="video/mp4">
-            </video>
+            <img
+                src="preview3.jpg"
+                alt="IT opgaver"
+                class="video-preview"
+                onclick="openVideo('video3.mp4')"
+            >
             <div class="video-title">IT opgaver</div>
         </div>
 
+
+        <!-- VIDEO 4 -->
         <div class="video-card">
-            <video preload="metadata" onclick="openVideo(this)">
-                <source src="video4.mp4" type="video/mp4">
-            </video>
-            <div class="video-title">Jobafprøving</div>
+            <img
+                src="preview4.jpg"
+                alt="Jobafprøvning"
+                class="video-preview"
+                onclick="openVideo('video4.mp4')"
+            >
+            <div class="video-title">Jobafprøvning</div>
         </div>
 
+
+        <!-- VIDEO 5 -->
         <div class="video-card">
-            <video preload="metadata" onclick="openVideo(this)">
-                <source src="video5.mp4" type="video/mp4">
-            </video>
+            <img
+                src="preview5.jpg"
+                alt="KREA"
+                class="video-preview"
+                onclick="openVideo('video5.mp4')"
+            >
             <div class="video-title">KREA</div>
         </div>
 
+
+        <!-- VIDEO 6 -->
         <div class="video-card">
-            <video preload="metadata" onclick="openVideo(this)">
-                <source src="video6.mp4" type="video/mp4">
-            </video>
+            <img
+                src="Asset 10.png"
+                alt="Mindfulness og Yoga"
+                class="video-preview"
+                onclick="openVideo('video6.mp4')"
+            >
             <div class="video-title">Mindfulness og Yoga</div>
         </div>
 
+
+        <!-- VIDEO 7 -->
         <div class="video-card">
-            <video preload="metadata" onclick="openVideo(this)">
-                <source src="video7.mp4" type="video/mp4">
-            </video>
+            <img
+                src="preview7.jpg"
+                alt="Motion og træning"
+                class="video-preview"
+                onclick="openVideo('video7.mp4')"
+            >
             <div class="video-title">Motion og træning</div>
         </div>
 
+
+        <!-- VIDEO 8 -->
         <div class="video-card">
-            <video preload="metadata" onclick="openVideo(this)">
-                <source src="video8.mp4" type="video/mp4">
-            </video>
+            <img
+                src="preview8.jpg"
+                alt="Praktiske opgaver"
+                class="video-preview"
+                onclick="openVideo('video8.mp4')"
+            >
             <div class="video-title">Praktiske opgaver</div>
         </div>
 
+
+        <!-- VIDEO 9 -->
         <div class="video-card">
-            <video preload="metadata" onclick="openVideo(this)">
-                <source src="video9.mp4" type="video/mp4">
-            </video>
+            <img
+                src="preview9.jpg"
+                alt="Rekreative aktiviteter"
+                class="video-preview"
+                onclick="openVideo('video9.mp4')"
+            >
             <div class="video-title">Rekreative aktiviteter</div>
         </div>
 
+
+        <!-- VIDEO 10 -->
         <div class="video-card">
-            <video preload="metadata" onclick="openVideo(this)">
-                <source src="video10.mp4" type="video/mp4">
-            </video>
+            <img
+                src="preview10.jpg"
+                alt="Slideshow fra infotavle"
+                class="video-preview"
+                onclick="openVideo('video10.mp4')"
+            >
             <div class="video-title">Slideshow fra infotavle</div>
         </div>
 
+
+        <!-- VIDEO 11 -->
         <div class="video-card">
-            <video preload="metadata" onclick="openVideo(this)">
-                <source src="1583660463.mp4" type="video/mp4">
-            </video>
+            <img
+                src="preview11.jpg"
+                alt="Ture ud af huset"
+                class="video-preview"
+                onclick="openVideo('1583660463.mp4')"
+            >
             <div class="video-title">Ture ud af huset</div>
         </div>
 
+
+        <!-- VIDEO 12 -->
         <div class="video-card">
-            <video preload="metadata" onclick="openVideo(this)">
-                <source src="video12.mp4" type="video/mp4">
-            </video>
+            <img
+                src="preview12.jpg"
+                alt="Ungdomsliv"
+                class="video-preview"
+                onclick="openVideo('video12.mp4')"
+            >
             <div class="video-title">Ungdomsliv</div>
         </div>
 
@@ -311,15 +371,25 @@
 
 
     <!-- VIDEO POPUP -->
-    <div class="video-popup" id="videoPopup" onclick="closeVideoOutside(event)">
+    <div
+        class="video-popup"
+        id="videoPopup"
+        onclick="closeVideoOutside(event)"
+    >
 
         <div class="popup-content">
 
-            <button class="close-button" onclick="closeVideo()">
+            <button
+                class="close-button"
+                onclick="closeVideo()"
+            >
                 &times;
             </button>
 
-            <video id="popupVideo" controls>
+            <video
+                id="popupVideo"
+                controls
+            >
             </video>
 
         </div>
@@ -334,13 +404,10 @@
         const popupVideo = document.getElementById("popupVideo");
 
 
-        function openVideo(video) {
+        function openVideo(videoFile) {
 
-            // Get the video source
-            const source = video.querySelector("source");
-
-            // Set popup video source
-            popupVideo.src = source.src;
+            // Set the selected video
+            popupVideo.src = videoFile;
 
             // Show popup
             popup.classList.add("active");
@@ -375,7 +442,7 @@
 
         function closeVideoOutside(event) {
 
-            // Only close if the dark background itself was clicked
+            // Only close when the dark background is clicked
             if (event.target === popup) {
                 closeVideo();
             }
@@ -383,7 +450,7 @@
         }
 
 
-        // Close popup with ESC key
+        // Close popup with ESC
         document.addEventListener("keydown", function(event) {
 
             if (event.key === "Escape") {
