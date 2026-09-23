@@ -100,35 +100,35 @@
            VIDEO PREVIEW
            ========================= */
 
-       /* =========================
-   VIDEO PREVIEW
-   ========================= */
+        .video-preview-wrapper {
+            position: relative;
 
-.video-preview-wrapper {
-    position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
 
-    width: 100%;
-    aspect-ratio: 16 / 9;
+            overflow: hidden;
 
-    overflow: hidden;
+            background-color: #222;
 
-    background-color: #222;
+            cursor: pointer;
+        }
 
-    cursor: pointer;
-}
 
-.video-preview {
-    width: 100%;
-    height: 100%;
+        .video-preview {
+            width: 100%;
+            height: 100%;
 
-    display: block;
+            display: block;
 
-    object-fit: contain;
+            object-fit: contain;
 
-    object-position: center;
+            object-position: center;
 
-    cursor: pointer;
-}
+            background-color: #222;
+
+            cursor: pointer;
+        }
+
 
         /* =========================
            PLAY BUTTON
@@ -156,8 +156,9 @@
 
             pointer-events: none;
 
-            transition: transform 0.2s ease,
-                        background-color 0.2s ease;
+            transition:
+                transform 0.2s ease,
+                background-color 0.2s ease;
         }
 
 
@@ -823,26 +824,26 @@
 
         function openVideo(videoFile) {
 
-            // Make sure any previous video is stopped
+            // Stop any previous video
             popupVideo.pause();
 
-            // Set the new video
+            // Set the selected video
             popupVideo.src = videoFile;
 
             // Show popup
             popup.classList.add("active");
 
-            // Prevent the page from scrolling
+            // Prevent page scrolling
             document.body.style.overflow = "hidden";
 
-            // Load the selected MP4
+            // Load the selected video
             popupVideo.load();
 
+
             /*
-             * Start playing the video.
-             * The play() call happens directly from the
-             * click that opened the video.
+             * Start playing the video
              */
+
             const playPromise = popupVideo.play();
 
             if (playPromise !== undefined) {
@@ -873,10 +874,10 @@
             // Reset playback position
             popupVideo.currentTime = 0;
 
-            // Remove the video
+            // Remove video source
             popupVideo.removeAttribute("src");
 
-            // Reset the video element
+            // Reset video element
             popupVideo.load();
 
             // Hide popup
@@ -894,8 +895,7 @@
 
         function closeVideoOutside(event) {
 
-            // Only close if the dark background itself
-            // was clicked.
+            // Only close when the dark background is clicked
 
             if (event.target === popup) {
 
@@ -925,15 +925,12 @@
 
 
         /*
-         * IF VIDEO FINISHES
-         *
-         * The video stays open so the visitor can replay it
-         * using the controls.
+         * CLOSE WHEN VIDEO FINISHES
          */
 
         popupVideo.addEventListener("ended", function() {
 
-            popupVideo.currentTime = 0;
+            closeVideo();
 
         });
 
