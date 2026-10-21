@@ -1,13 +1,14 @@
+
 <!DOCTYPE html>
 <html lang="da">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>Special Minds - messe</title>
 
     <style>
-
         /* =========================
            GENERAL
            ========================= */
@@ -15,13 +16,10 @@
         body {
             margin: 0;
             min-height: 100vh;
-
             background-color: #353D4D;
             color: white;
-
             font-family: Arial, sans-serif;
         }
-
 
         /* =========================
            HEADER
@@ -31,30 +29,22 @@
             display: flex;
             align-items: center;
             justify-content: center;
-
             gap: 30px;
-
-            padding: 30px 20px 50px 20px;
+            padding: 30px 20px 50px;
         }
-
 
         .logo {
             width: 100px;
             height: 100px;
-
             object-fit: contain;
         }
 
-
         h1 {
             margin: 0;
-
             font-size: 48px;
             font-weight: bold;
-
             text-align: center;
         }
-
 
         /* =========================
            VIDEO GRID
@@ -63,72 +53,46 @@
         .video-grid {
             width: 90%;
             max-width: 1400px;
-
             margin: 0 auto;
-
             display: grid;
-
             grid-template-columns: repeat(4, 1fr);
-
             gap: 25px;
-
             padding-bottom: 50px;
         }
 
-
         /* =========================
-           VIDEO CARD
+           VIDEO CARDS
            ========================= */
 
         .video-card {
             background-color: #6CA39E;
-
             border-radius: 12px;
-
             overflow: hidden;
-
             transition: transform 0.2s ease;
         }
-
 
         .video-card:hover {
             transform: translateY(-5px);
         }
 
-
-        /* =========================
-           VIDEO PREVIEW
-           ========================= */
-
         .video-preview-wrapper {
             position: relative;
-
             width: 100%;
             aspect-ratio: 16 / 9;
-
             overflow: hidden;
-
             background-color: #222;
-
             cursor: pointer;
         }
-
 
         .video-preview {
             width: 100%;
             height: 100%;
-
             display: block;
-
             object-fit: contain;
-
             object-position: center;
-
             background-color: #222;
-
             cursor: pointer;
         }
-
 
         /* =========================
            PLAY BUTTON
@@ -136,128 +100,84 @@
 
         .play-button {
             position: absolute;
-
             top: 50%;
             left: 50%;
-
             transform: translate(-50%, -50%);
-
             width: 65px;
             height: 65px;
-
             border-radius: 50%;
-
             background-color: rgba(0, 0, 0, 0.65);
-
             display: flex;
-
             align-items: center;
             justify-content: center;
-
             pointer-events: none;
-
-            transition:
-                transform 0.2s ease,
-                background-color 0.2s ease;
+            transition: 0.2s ease;
         }
-
 
         .play-button::after {
             content: "";
-
             margin-left: 5px;
-
             border-top: 13px solid transparent;
             border-bottom: 13px solid transparent;
             border-left: 21px solid white;
         }
 
-
         .video-preview-wrapper:hover .play-button {
-            transform: translate(-50%, -50%) scale(1.1);
-
             background-color: rgba(0, 0, 0, 0.8);
+            transform: translate(-50%, -50%) scale(1.1);
         }
-
-
-        /* =========================
-           VIDEO TITLE
-           ========================= */
 
         .video-title {
             padding: 15px;
-
             font-size: 20px;
             font-weight: bold;
-
             text-align: center;
         }
 
-
         /* =========================
-           VIDEO POPUP BACKGROUND
+           POPUP BACKGROUNDS
            ========================= */
 
-        .video-popup {
+        .video-popup,
+        .contact-popup {
             display: none;
-
             position: fixed;
-
             z-index: 1000;
-
             top: 0;
             left: 0;
-
             width: 100%;
             height: 100%;
-
             background-color: rgba(0, 0, 0, 0.8);
-
             align-items: center;
             justify-content: center;
         }
 
-
-        .video-popup.active {
+        .video-popup.active,
+        .contact-popup.active {
             display: flex;
         }
 
-
         /* =========================
-           POPUP VIDEO CONTAINER
+           VIDEO POPUP
            ========================= */
 
         .popup-content {
             position: relative;
-
             width: 75vw;
             height: 75vh;
-
             background-color: #222;
-
             border-radius: 12px;
-
             overflow: hidden;
-
             box-shadow: 0 0 40px rgba(0, 0, 0, 0.6);
         }
-
-
-        /* =========================
-           POPUP VIDEO
-           ========================= */
 
         .popup-content video {
             width: 100%;
             height: 100%;
-
             display: block;
-
             object-fit: contain;
-
             background-color: #111;
         }
-
 
         /* =========================
            CLOSE BUTTON
@@ -265,40 +185,96 @@
 
         .close-button {
             position: absolute;
-
             top: 10px;
             right: 15px;
-
             z-index: 1001;
-
             width: 40px;
             height: 40px;
-
             border: none;
-
             border-radius: 50%;
-
             background-color: rgba(0, 0, 0, 0.7);
-
             color: white;
-
             font-size: 28px;
-
-            line-height: 40px;
-
             cursor: pointer;
-
             display: flex;
-
             align-items: center;
             justify-content: center;
         }
-
 
         .close-button:hover {
             background-color: rgba(255, 255, 255, 0.25);
         }
 
+        /* =========================
+           CONTACT BUTTON
+           ========================= */
+
+        .contact-section {
+            display: flex;
+            justify-content: center;
+            padding: 10px 20px 70px;
+        }
+
+        .contact-button {
+            background-color: #6CA39E;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            padding: 20px 50px;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+
+        .contact-button:hover {
+            background-color: #578b86;
+            transform: scale(1.05);
+        }
+
+        /* =========================
+           CONTACT POPUP - 80%
+           ========================= */
+
+        .contact-content {
+            position: relative;
+            box-sizing: border-box;
+            width: 80vw;
+            height: 80vh;
+            background-color: #353D4D;
+            border-radius: 12px;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.6);
+        }
+
+        .contact-content h2 {
+            margin: 0 45px 20px;
+            text-align: center;
+            font-size: 28px;
+        }
+
+        .contact-content iframe {
+            width: 100%;
+            flex: 1;
+            min-height: 0;
+            border: none;
+            border-radius: 8px;
+            background-color: white;
+        }
+
+        .contact-fallback {
+            text-align: center;
+            font-size: 14px;
+            margin: 12px 0 0;
+        }
+
+        .contact-fallback a {
+            color: white;
+            text-decoration: underline;
+        }
 
         /* =========================
            TABLET
@@ -310,25 +286,20 @@
                 grid-template-columns: repeat(2, 1fr);
             }
 
-
             h1 {
                 font-size: 36px;
             }
-
 
             .logo {
                 width: 80px;
                 height: 80px;
             }
 
-
             .popup-content {
                 width: 85vw;
                 height: 70vh;
             }
-
         }
-
 
         /* =========================
            MOBILE
@@ -338,41 +309,32 @@
 
             .header {
                 gap: 10px;
-
-                padding-top: 20px;
-                padding-bottom: 30px;
+                padding: 20px 10px 30px;
             }
-
 
             .video-grid {
                 grid-template-columns: 1fr;
-
                 width: 90%;
             }
-
 
             .logo {
                 width: 55px;
                 height: 55px;
             }
 
-
             h1 {
                 font-size: 25px;
             }
-
 
             .popup-content {
                 width: 95vw;
                 height: 65vh;
             }
 
-
             .play-button {
                 width: 50px;
                 height: 50px;
             }
-
 
             .play-button::after {
                 border-top-width: 10px;
@@ -380,14 +342,25 @@
                 border-left-width: 17px;
             }
 
-        }
+            .contact-content {
+                width: 95vw;
+                height: 90vh;
+                padding: 15px;
+            }
 
+            .contact-content h2 {
+                font-size: 22px;
+            }
+
+            .contact-button {
+                font-size: 20px;
+                padding: 18px 35px;
+            }
+        }
     </style>
 </head>
 
-
 <body>
-
 
     <!-- =========================
          HEADER
@@ -401,9 +374,7 @@
             class="logo"
         >
 
-        <h1>
-            Velkommen til Special Minds
-        </h1>
+        <h1>Velkommen til Special Minds</h1>
 
         <img
             src="sp.m logo - messe.png"
@@ -413,365 +384,298 @@
 
     </header>
 
-
-
     <!-- =========================
          VIDEO GRID
          ========================= -->
 
     <main class="video-grid">
 
-
         <!-- VIDEO 1 -->
         <div class="video-card">
-
             <div
                 class="video-preview-wrapper"
                 onclick="openVideo('Botræning Film.mp4')"
             >
-
                 <video
                     class="video-preview"
                     poster="preview1.jpg"
                     preload="none"
                     muted
                     playsinline
-                >
-                </video>
-
+                ></video>
                 <div class="play-button"></div>
-
             </div>
-
-            <div class="video-title">
-                Botræning
-            </div>
-
+            <div class="video-title">Botræning</div>
         </div>
-
-
 
         <!-- VIDEO 2 -->
         <div class="video-card">
-
             <div
                 class="video-preview-wrapper"
                 onclick="openVideo('Fagligt Film.mp4')"
             >
-
                 <video
                     class="video-preview"
                     poster="Asset 8.png"
                     preload="none"
                     muted
                     playsinline
-                >
-                </video>
-
+                ></video>
                 <div class="play-button"></div>
-
             </div>
-
-            <div class="video-title">
-                Fagligt
-            </div>
-
+            <div class="video-title">Fagligt</div>
         </div>
-
-
 
         <!-- VIDEO 3 -->
         <div class="video-card">
-
             <div
                 class="video-preview-wrapper"
                 onclick="openVideo('IT opgaver.mp4')"
             >
-
                 <video
                     class="video-preview"
                     poster="Asset 1.png"
                     preload="none"
                     muted
                     playsinline
-                >
-                </video>
-
+                ></video>
                 <div class="play-button"></div>
-
             </div>
-
-            <div class="video-title">
-                IT opgaver
-            </div>
-
+            <div class="video-title">IT opgaver</div>
         </div>
-
-
 
         <!-- VIDEO 4 -->
         <div class="video-card">
-
             <div
                 class="video-preview-wrapper"
                 onclick="openVideo('Jobafprøvning Film under 25mb.mp4')"
             >
-
                 <video
                     class="video-preview"
                     poster="preview4.jpg"
                     preload="none"
                     muted
                     playsinline
-                >
-                </video>
-
+                ></video>
                 <div class="play-button"></div>
-
             </div>
-
-            <div class="video-title">
-                Jobafprøvning
-            </div>
-
+            <div class="video-title">Jobafprøvning</div>
         </div>
-
-
 
         <!-- VIDEO 5 -->
         <div class="video-card">
-
             <div
                 class="video-preview-wrapper"
                 onclick="openVideo('Krea Film under 25mb.mp4')"
             >
-
                 <video
                     class="video-preview"
                     poster="Asset 6.png"
                     preload="none"
                     muted
                     playsinline
-                >
-                </video>
-
+                ></video>
                 <div class="play-button"></div>
-
             </div>
-
-            <div class="video-title">
-                KREA
-            </div>
-
+            <div class="video-title">KREA</div>
         </div>
-
-
 
         <!-- VIDEO 6 -->
         <div class="video-card">
-
             <div
                 class="video-preview-wrapper"
                 onclick="openVideo('video6.mp4')"
             >
-
                 <video
                     class="video-preview"
                     poster="Asset 10.png"
                     preload="none"
                     muted
                     playsinline
-                >
-                </video>
-
+                ></video>
                 <div class="play-button"></div>
-
             </div>
-
-            <div class="video-title">
-                Mindfulness og Yoga
-            </div>
-
+            <div class="video-title">Mindfulness og Yoga</div>
         </div>
-
-
 
         <!-- VIDEO 7 -->
         <div class="video-card">
-
             <div
                 class="video-preview-wrapper"
                 onclick="openVideo('video7.mp4')"
             >
-
                 <video
                     class="video-preview"
                     poster="Asset 5.png"
                     preload="none"
                     muted
                     playsinline
-                >
-                </video>
-
+                ></video>
                 <div class="play-button"></div>
-
             </div>
-
-            <div class="video-title">
-                Motion og træning
-            </div>
-
+            <div class="video-title">Motion og træning</div>
         </div>
-
-
 
         <!-- VIDEO 8 -->
         <div class="video-card">
-
             <div
                 class="video-preview-wrapper"
                 onclick="openVideo('Praktisk Værksted Film under 25mb.mp4')"
             >
-
                 <video
                     class="video-preview"
                     poster="preview8.jpg"
                     preload="none"
                     muted
                     playsinline
-                >
-                </video>
-
+                ></video>
                 <div class="play-button"></div>
-
             </div>
-
-            <div class="video-title">
-                Praktiske opgaver
-            </div>
-
+            <div class="video-title">Praktiske opgaver</div>
         </div>
-
-
 
         <!-- VIDEO 9 -->
         <div class="video-card">
-
             <div
                 class="video-preview-wrapper"
                 onclick="openVideo('video9.mp4')"
             >
-
                 <video
                     class="video-preview"
                     poster="Asset 4.png"
                     preload="none"
                     muted
                     playsinline
-                >
-                </video>
-
+                ></video>
                 <div class="play-button"></div>
-
             </div>
-
-            <div class="video-title">
-                Rekreative aktiviteter
-            </div>
-
+            <div class="video-title">Rekreative aktiviteter</div>
         </div>
-
-
 
         <!-- VIDEO 10 -->
         <div class="video-card">
-
             <div
                 class="video-preview-wrapper"
                 onclick="openVideo('Dimission Film.mp4')"
             >
-
                 <video
                     class="video-preview"
                     poster="preview10.jpg"
                     preload="none"
                     muted
                     playsinline
-                >
-                </video>
-
+                ></video>
                 <div class="play-button"></div>
-
             </div>
-
-            <div class="video-title">
-                Dimission
-            </div>
-
+            <div class="video-title">Dimission</div>
         </div>
-
-
 
         <!-- VIDEO 11 -->
         <div class="video-card">
-
             <div
                 class="video-preview-wrapper"
                 onclick="openVideo('Ture ud af huset film under 25mb.mp4')"
             >
-
                 <video
                     class="video-preview"
                     poster="preview11.jpg"
                     preload="none"
                     muted
                     playsinline
-                >
-                </video>
-
+                ></video>
                 <div class="play-button"></div>
-
             </div>
-
-            <div class="video-title">
-                Ture ud af huset
-            </div>
-
+            <div class="video-title">Ture ud af huset</div>
         </div>
-
-
 
         <!-- VIDEO 12 -->
         <div class="video-card">
-
             <div
                 class="video-preview-wrapper"
                 onclick="openVideo('Ungdomsliv film under 25mb.mp4')"
             >
-
                 <video
                     class="video-preview"
                     poster="Asset 2.png"
                     preload="none"
                     muted
                     playsinline
-                >
-                </video>
-
+                ></video>
                 <div class="play-button"></div>
-
             </div>
-
-            <div class="video-title">
-                Ungdomsliv
-            </div>
-
+            <div class="video-title">Ungdomsliv</div>
         </div>
-
 
     </main>
 
+    <!-- =========================
+         CONTACT BUTTON
+         ========================= -->
 
+    <section class="contact-section">
+
+        <button
+            class="contact-button"
+            type="button"
+            onclick="openContact()"
+        >
+            Vil du kontaktes
+        </button>
+
+    </section>
+
+    <!-- =========================
+         CONTACT POPUP
+         ========================= -->
+
+    <div
+        class="contact-popup"
+        id="contactPopup"
+        onclick="closeContactOutside(event)"
+    >
+
+        <div
+            class="contact-content"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="contactTitle"
+        >
+
+            <button
+                class="close-button"
+                type="button"
+                onclick="closeContact()"
+                aria-label="Luk kontaktformular"
+            >
+                &times;
+            </button>
+
+            <h2 id="contactTitle">
+                Vil du kontaktes?
+            </h2>
+
+            <!-- PUBLISHED GOOGLE FORM -->
+            <iframe
+                id="contactFrame"
+                title="Special Minds kontaktformular"
+                src="https://docs.google.com/forms/d/e/1FAIpQLScRsef3-vVI-CyYLCyyWErYBxVFewoeyVLj3hJiXdM94jFMBg/viewform?embedded=true"
+                loading="lazy"
+            ></iframe>
+
+            <p class="contact-fallback">
+                Hvis formularen ikke vises,
+                <a
+                    href="https://docs.google.com/forms/d/e/1FAIpQLScRsef3-vVI-CyYLCyyWErYBxVFewoeyVLj3hJiXdM94jFMBg/viewform"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    åbn den i et nyt vindue
+                </a>.
+            </p>
+
+        </div>
+
+    </div>
 
     <!-- =========================
          VIDEO POPUP
@@ -787,25 +691,22 @@
 
             <button
                 class="close-button"
+                type="button"
                 onclick="closeVideo()"
                 aria-label="Luk video"
             >
                 &times;
             </button>
 
-
             <video
                 id="popupVideo"
                 controls
                 playsinline
-            >
-            </video>
+            ></video>
 
         </div>
 
     </div>
-
-
 
     <!-- =========================
          JAVASCRIPT
@@ -813,36 +714,32 @@
 
     <script>
 
-        const popup = document.getElementById("videoPopup");
+        const popup =
+            document.getElementById("videoPopup");
 
-        const popupVideo = document.getElementById("popupVideo");
+        const popupVideo =
+            document.getElementById("popupVideo");
 
+        const contactPopup =
+            document.getElementById("contactPopup");
 
-        /*
-         * OPEN VIDEO
-         */
+        let previousContactFocus = null;
+
+        /* =========================
+           OPEN VIDEO
+           ========================= */
 
         function openVideo(videoFile) {
 
-            // Stop any previous video
             popupVideo.pause();
 
-            // Set the selected video
             popupVideo.src = videoFile;
 
-            // Show popup
             popup.classList.add("active");
 
-            // Prevent page scrolling
             document.body.style.overflow = "hidden";
 
-            // Load the selected video
             popupVideo.load();
-
-
-            /*
-             * Start playing the video
-             */
 
             const playPromise = popupVideo.play();
 
@@ -856,86 +753,110 @@
                     );
 
                 });
-
             }
-
         }
 
-
-        /*
-         * CLOSE VIDEO
-         */
+        /* =========================
+           CLOSE VIDEO
+           ========================= */
 
         function closeVideo() {
 
-            // Stop playback
             popupVideo.pause();
 
-            // Reset playback position
-            popupVideo.currentTime = 0;
-
-            // Remove video source
             popupVideo.removeAttribute("src");
 
-            // Reset video element
             popupVideo.load();
 
-            // Hide popup
             popup.classList.remove("active");
 
-            // Allow page scrolling again
             document.body.style.overflow = "";
-
         }
 
-
-        /*
-         * CLOSE WHEN CLICKING OUTSIDE
-         */
+        /* =========================
+           CLOSE VIDEO OUTSIDE
+           ========================= */
 
         function closeVideoOutside(event) {
 
-            // Only close when the dark background is clicked
-
             if (event.target === popup) {
-
                 closeVideo();
-
             }
-
         }
 
-
-        /*
-         * CLOSE WITH ESCAPE
-         */
-
-        document.addEventListener("keydown", function(event) {
-
-            if (
-                event.key === "Escape" &&
-                popup.classList.contains("active")
-            ) {
-
-                closeVideo();
-
-            }
-
-        });
-
-
-        /*
-         * CLOSE WHEN VIDEO FINISHES
-         */
+        /* =========================
+           CLOSE WHEN VIDEO ENDS
+           ========================= */
 
         popupVideo.addEventListener("ended", function() {
 
-            closeVideo();
+            console.log("Video finished playing");
 
+            closeVideo();
+        });
+
+        /* =========================
+           OPEN CONTACT POPUP
+           ========================= */
+
+        function openContact() {
+
+            previousContactFocus = document.activeElement;
+
+            contactPopup.classList.add("active");
+
+            document.body.style.overflow = "hidden";
+
+            contactPopup
+                .querySelector(".close-button")
+                .focus();
+        }
+
+        /* =========================
+           CLOSE CONTACT POPUP
+           ========================= */
+
+        function closeContact() {
+
+            contactPopup.classList.remove("active");
+
+            document.body.style.overflow = "";
+
+            if (previousContactFocus) {
+                previousContactFocus.focus();
+            }
+        }
+
+        /* =========================
+           CLOSE CONTACT OUTSIDE
+           ========================= */
+
+        function closeContactOutside(event) {
+
+            if (event.target === contactPopup) {
+                closeContact();
+            }
+        }
+
+        /* =========================
+           CLOSE WITH ESCAPE
+           ========================= */
+
+        document.addEventListener("keydown", function(event) {
+
+            if (event.key === "Escape") {
+
+                if (contactPopup.classList.contains("active")) {
+                    closeContact();
+                }
+
+                if (popup.classList.contains("active")) {
+                    closeVideo();
+                }
+            }
         });
 
     </script>
-
 
 </body>
 </html>
